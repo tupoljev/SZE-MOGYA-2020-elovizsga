@@ -1,0 +1,1 @@
+# SZE-MOGYA-2020-elovizsga
