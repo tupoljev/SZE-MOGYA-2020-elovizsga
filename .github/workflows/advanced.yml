@@ -1,0 +1,11 @@
+name: Test Basic solution
+on: push
+
+jobs:
+  model-generation-test:
+    name: Advanced Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: sudo apt update && sudo apt install -y glpk
+      - run: cd advanced && glpsol -m model.mod -d ${{ matrix.exercise }} --check
