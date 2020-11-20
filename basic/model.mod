@@ -21,14 +21,16 @@ s.t. PlaceAllCashier:
 #ne szeparáljuk a termékeket
 s.t. OneProductOnOneRow{p in ProductGroups}:
     sum{r in Rows} productplace[r,p] = 1;
-#faszomatama
-s.t. SetBuildingLength{r in Rows}:
+#beállítani épület hossz
+s.t. SetLength{r in Rows}:
     BuildingLength >= rowelength[r];
-#fasz
-s.t. miafasz{r in Rows}:
+#kiszámolni sor hossz
+s.t. SetRows{r in Rows}:
 	sum{p in ProductGroups}productplace[r,p]*space[p]+cashiertoplace[r]*cashierLength=rowelength[r];
 
 
-minimize FASZOM{r in Rows}:BuildingLength;
-end;
+minimize Buildinglength{r in Rows}:BuildingLength;
+
+solve;
 printf "%f\n",BuildingLength;
+end;
