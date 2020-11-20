@@ -84,10 +84,10 @@ Szintén az egyszerűség kedvéért feltételezzük, hogy a kasszához való be
 ## Példa bemenet
 
 ```ampl
-param nRows        :=   6;
-param cashierCount :=   1;
+param nRows         :=   6;
+param cashierCount  :=   1;
 param cashierLength := 2.5;
-param maxRowLength :=   4;
+param maxRowLength  :=   4;
 
 set ProductGroups := Group1	Group2	Group3	Group4	Group5	Group6	Group7	Group8	Group9	Group10	Group11	Group12	Group13	Group14	Group15	Group16	Group17	Group18	Group19	Group20;
 
