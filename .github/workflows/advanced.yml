@@ -1,4 +1,4 @@
-name: Test Basic solution
+name: Test Advanced solution
 on: push
 
 jobs:
@@ -7,5 +7,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: sudo apt update && sudo apt install -y glpk
-      - run: cd advanced && glpsol -m model.mod -d ${{ matrix.exercise }} --check
+      - run: sudo apt update && sudo apt install -y glpk-utils
+      - run: cd advanced && glpsol -m model.mod -d data.dat --check

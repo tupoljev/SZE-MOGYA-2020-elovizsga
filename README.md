@@ -83,7 +83,7 @@ Szintén az egyszerűség kedvéért feltételezzük, hogy a kasszához való be
 
 ## Példa bemenet
 
-```
+```ampl
 param nRows        :=   6;
 param cachierCount :=   1;
 param cachierWidth := 2.5;

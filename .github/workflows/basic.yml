@@ -27,8 +27,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: sudo apt update && sudo apt install -y glpk
+      - run: sudo apt update && sudo apt install -y glpk-utils
       - run: |
           cd basic/
           glpsol -m model.mod -d ${{ matrix.exercise }} -y "${{ matrix.exercise }}_sol.txt"
-          diff ${{ matrix.exercise }} "${{ matrix.exercise }}_sol.txt"
+          diff "${{ matrix.exercise }}.txt" "${{ matrix.exercise }}_sol.txt"
