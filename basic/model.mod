@@ -1,38 +1,33 @@
-param nRows;
-set Rows := 1..nRows;
 set ProductGroups;
-param cashierCount;
-param cashierLength;
 param space{ProductGroups};
 
 
-var BuildingLength >= 0;
-var RowLength{Rows} >= 0;
-var CashiersInRow{Rows} >= 0, integer;
-var Put{Rows, ProductGroups} binary;
+param nRows;
+set Rows:=1..nRows;
+
+param cashierCount;
+param cashierLength;
+
+#változok
+var cashiertoplace{Rows}>=0, binary;
+var productplace{Rows,ProductGroups} binary;
+var rowelength{Rows}>=0;
+var BuildingLength>=0;
+
+#megszorítások
+#az összes kasszát be kell építeni
+s.t. PlaceAllCashier:
+	sum{r in Rows}cashiertoplace[r]=cashierCount;
+#ne szeparáljuk a termékeket
+s.t. OneProductOnOneRow{p in ProductGroups}:
+    sum{r in Rows} productplace[r,p] = 1;
+#beállítani épület hossz
+s.t. SetLength{r in Rows}:
+    BuildingLength >= rowelength[r];
+#kiszámolni sor hossz
+s.t. SetRows{r in Rows}:
+	sum{p in ProductGroups}productplace[r,p]*space[p]+cashiertoplace[r]*cashierLength=rowelength[r];
 
 
-s.t. PlaceAllCashiers{r in Rows}:
-    CashiersInRow[r] <= cashierCount;
-
-s.t. MustUseAllCashiers:
-    sum{r in Rows} CashiersInRow[r] = cashierCount;
-
-s.t. CantSeparateProductGroups{p in ProductGroups}:
-    sum{r in Rows} Put[r,p] = 1;
-
-s.t. SetLengthOfRow{r in Rows}:
-    RowLength[r] = sum{p in ProductGroups} Put[r,p]*space[p] + CashiersInRow[r]*cashierLength;
-
-s.t. SetLengthOfBuilding{r in Rows}:
-    BuildingLength >= RowLength[r];
-
- 
-minimize Length: BuildingLength;
-
-
-solve;
-
-printf "%f\n",BuildingLength;
-
+minimize Buildinglength{r in Rows}:BuildingLength;
 end;
