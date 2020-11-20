@@ -1,13 +1,4 @@
-set ProductGroups;
-param space{ProductGroups};
 
-
-
-param nRows;
-set Rows:=1..nRows;
-
-param cashierCount;
-param cashierLength;
 /*products*/
 set ProductGroups;
 param space{ProductGroups};
