@@ -22,15 +22,15 @@ Tehát a layout valami ilyesmi például 7 sor és 3 kassza esetén, ahol minden
   ##   ##   ##   ##   ##   ##   ##
 ```
 
-Vannak különböző termékcsoportjaink, amikhez adott, hogy egy soron hány méternyi helyet foglalnának el. (Feltételezzük, hogy minden sor két oldalas, és ez a szám már a kétoldalas pakolás esetén értendő.)
+Vannak különböző termékcsoportjaink, amikhez adott, hogy egy soron hány méternyi helyet foglalnának el. (Feltételezzük, hogy minden sor két oldalas, és ez a szám már a kétoldalas pakolás esetén értendő.) Egy termékcsoport termékei nem oszthatók szét több sorba.
 
 A feladat úgy megtervezni az áruház pakolását, hogy a sorokat (és ezáltal az épületet) minél rövidebbre tudjuk venni. Az épület hosszát most egyszerűen úgy vesszük, mint a leghosszabb sor hosszát (amibe most értelemszerűen a kassza hosszát is belevesszük, ha van a sorban).
 
 ## Példa bemenet
 
 ```ampl
-param nRows        :=   3;
-param cashierCount :=   1;
+param nRows         :=   3;
+param cashierCount  :=   1;
 param cashierLength := 2.5;
 
 set ProductGroups :=  Group1 Group2 Group3 Group4 Group5 Group6 Group7 Group8;
@@ -71,7 +71,7 @@ Az alap szinthez képest további bemeneti adatok:
  - a sorok maximális hossza
  - vásárlói csoportok halmaza, valamint mindegyikre:
    - a csoportba tartozó emberek száma
-   - annak a valószínűsége, hogy egy ebbe a csoportba tartozó vásárló megvesz valamit, amire nincs szüksége, ha látja.
+   - annak a valószínűsége, hogy egy ebbe a csoportba tartozó vásárló megvesz valamit, amire nincs szüksége, ha látja
    - melyik termékeket szeretné eleve megvenni
 
 ## Manipulálás
