@@ -1,6 +1,6 @@
 param nRows        :=   3;
-param cachierCount :=   1;
-param cachierWidth := 2.5;
+param cashierCount :=   1;
+param cashierLength := 2.5;
 
 set ProductGroups :=  Group1 Group2 Group3 Group4 Group5 Group6 Group7 Group8;
 
@@ -15,4 +15,3 @@ Group6	0.21
 Group7	1.39
 Group8	1.47
 ;
-

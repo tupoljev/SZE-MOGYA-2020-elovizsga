@@ -5,7 +5,7 @@ Itt: https://szelearning.sze.hu/course/view.php?id=3163
 
 Egy megépítendő áruház sorait szeretnénk megtervezni úgy, hogy minél kevésbé legyen "hosszú" az áruházunk.
 
-A terület szélességét ismerjük, és ebből bemenetként adott, hogy hány sorral tervezhetünk. Tudjuk továbbá azt is, hogy hány kasszát kell beépíteni. Minden kassza egy sornyi szélességet foglal el, a hossza pedig adott. Értelemszerűen, azoknak a soroknak ennyivel rövidebbeknek kell lennie, amelyik végén kassza van. 
+A terület szélességét ismerjük, és ebből bemenetként adott, hogy hány sorral tervezhetünk. Tudjuk továbbá azt is, hogy hány kasszát kell beépíteni. Minden kassza egy sornyi szélességet foglal el, a hossza pedig adott. Értelemszerűen, azoknak a soroknak ennyivel rövidebbeknek kell lennie, amelyik végén kassza van.
 
 Tehát a layout valami ilyesmi például 7 sor és 3 kassza esetén, ahol minden kassza hossza most itt 4, a (nem kasszás) sorok hossza pedig 10.
 
@@ -20,7 +20,7 @@ Tehát a layout valami ilyesmi például 7 sor és 3 kassza esetén, ahol minden
   ##   ##   ##   ##   ##   ##   ##
   ##   ##   ##   ##   ##   ##   ##
   ##   ##   ##   ##   ##   ##   ##
-``` 
+```
 
 Vannak különböző termékcsoportjaink, amikhez adott, hogy egy soron hány méternyi helyet foglalnának el. (Feltételezzük, hogy minden sor két oldalas, és ez a szám már a kétoldalas pakolás esetén értendő.)
 
@@ -28,10 +28,10 @@ A feladat úgy megtervezni az áruház pakolását, hogy a sorokat (és ezáltal
 
 ## Példa bemenet
 
-```ampl 
+```ampl
 param nRows        :=   3;
-param cachierCount :=   1;
-param cachierWidth := 2.5;
+param cashierCount :=   1;
+param cashierLength := 2.5;
 
 set ProductGroups :=  Group1 Group2 Group3 Group4 Group5 Group6 Group7 Group8;
 
@@ -73,7 +73,7 @@ Az alap szinthez képest további bemeneti adatok:
    - a csoportba tartozó emberek száma
    - annak a valószínűsége, hogy egy ebbe a csoportba tartozó vásárló megvesz valamit, amire nincs szüksége, ha látja.
    - melyik termékeket szeretné eleve megvenni
- 
+
 ## Manipulálás
 
 Az egyszerűség kedvéért feltételezzük, hogy egy termékcsoportot akkor lát egy vásárló, ha azon a soron van legalább egy másik termékcsoport, amiből akar vásárolni. Ebben az esetben a megadott valószínűséggel megvesz ott egy terméket. Szintén az egyszerűség kedvéért feltételezhetjük, hogy az egy termékcsoportban lévő termékek közül egyenletes eloszlás szerint választnak és csak egy terméket, így ha vásárolnak, akkor a keletkezett (manipulált) többletbevételt tekinthetjük egy darab átlagos termékárnak abból a termékcsoportból.
@@ -85,13 +85,13 @@ Szintén az egyszerűség kedvéért feltételezzük, hogy a kasszához való be
 
 ```ampl
 param nRows        :=   6;
-param cachierCount :=   1;
-param cachierWidth := 2.5;
+param cashierCount :=   1;
+param cashierLength := 2.5;
 param maxRowLength :=   4;
 
 set ProductGroups := Group1	Group2	Group3	Group4	Group5	Group6	Group7	Group8	Group9	Group10	Group11	Group12	Group13	Group14	Group15	Group16	Group17	Group18	Group19	Group20;
 
-param: 
+param:
                 space   averagePrice:=
     Group1	    0.94	282.00
     Group2	    1.12	108.00
@@ -113,7 +113,7 @@ param:
     Group18	    1.31	94.00
     Group19	    0.38	93.00
     Group20	    0.56	268.00
-;   
+;
 
 set MustBeTogether := (Group1,Group2) , (Group12,Group8), (Group9,Group6), (Group3,Group2);
 set MustBeSeparated := (Group19,Group20), (Group18,Group16), (Group13,Group11);
